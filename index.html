@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduGames - Portofolio Game Anak</title>
+    <!-- Font Google yang ceria untuk anak-anak -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Palet Warna Hijau Cerah Segar */
+            --hijau-tua: #1b4d3e;        
+            --hijau-daun: #38b000;       
+            --hijau-muda: #70e000;       
+            --hijau-terang: #ccff33;     
+            --putih: #ffffff;
+            --kuning-ceria: #ffea00;     
+            --bg-ringan: #f4fbf7;
+            /* Warna Oranye Santai khusus Beranda */
+            --oranye-santai: #ff9f1c;    
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-ringan);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--hijau-tua);
+        }
+
+        /* --- LOGO BESAR & HERO --- */
+        .hero-section {
+            background: linear-gradient(135deg, var(--hijau-daun), var(--hijau-muda));
+            padding: 60px 20px 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animasi daun melayang di background */
+        .hero-section::before {
+            content: "🍃";
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.3;
+            animation: melayang 6s ease-in-out infinite;
+            left: 10%;
+            top: 20%;
+        }
+        .hero-section::after {
+            content: "🌿";
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.3;
+            animation: melayang 8s ease-in-out infinite;
+            right: 10%;
+            bottom: 20%;
+        }
+
+        .big-logo {
+            font-size: 4rem;
+            color: var(--kuning-ceria);
+            text-shadow: 4px 4px 0px var(--hijau-tua);
+            margin-bottom: 5px;
+            animation: membal 2s ease infinite alternate;
+            display: inline-block;
+        }
+
+        .big-logo i {
+            margin-right: 10px;
+        }
+
+        /* Judul tambahan di beranda warna Oren Santai */
+        .hero-mini-title {
+            color: var(--oranye-santai);
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px var(--hijau-tua);
+            letter-spacing: 1px;
+        }
+
+        .hero-tagline {
+            color: var(--putih);
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--putih);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(56, 176, 0, 0.15);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-item a {
+            text-decoration: none;
+            color: var(--hijau-tua);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item a:hover {
+            background-color: var(--hijau-terang);
+            color: var(--hijau-tua);
+            transform: scale(1.1);
+        }
+
+        /* --- LAYOUT UMUM SECTION --- */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Judul di bawah Beranda dikembalikan ke Hijau Tua */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem; 
+            color: var(--hijau-tua); 
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 5px;
+            background: var(--kuning-ceria);
+            margin: 10px auto 0 auto;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* --- BERANDA & GAME GRID --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--putih);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(56, 176, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid var(--hijau-muda);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(112, 224, 0, 0.3);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            color: var(--hijau-daun);
+            margin-bottom: 15px;
+        }
+
+        /* --- TARGET MARKET CARD MODIFICATION --- */
+        .market-card {
+            border: 3px solid var(--kuning-ceria) !important;
+        }
+        .market-badge {
+            display: inline-block;
+            background-color: var(--oranye-santai);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* --- SECTION FITUR --- */
+        #fitur .card {
+            border: 3px solid var(--putih);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+        #fitur .card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* --- SECTION BERITA WITH OVERLAY "LIHAT" --- */
+        .berita-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .berita-card {
+            background: var(--putih);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(56, 176, 0, 0.15); 
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid var(--hijau-muda);
+        }
+
+        .berita-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(56, 176, 0, 0.35);
+        }
+
+        .berita-img-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--hijau-terang), var(--hijau-muda));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--hijau-tua);
+            font-size: 3rem;
+        }
+
+        .berita-content {
+            padding: 25px;
+        }
+
+        .berita-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            color: var(--hijau-tua);
+        }
+
+        .berita-content p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .berita-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(56, 176, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .berita-card:hover .berita-overlay {
+            opacity: 1;
+        }
+
+        .btn-lihat {
+            background-color: var(--kuning-ceria);
+            color: var(--hijau-tua);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .btn-lihat:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- GALERI (Masonry Style) --- */
+        .galeri-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-auto-rows: 200px;
+            gap: 15px;
+        }
+
+        .galeri-item {
+            background-color: var(--hijau-muda);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            border: 4px solid var(--putih);
+            box-shadow: 0 5px 15px rgba(56, 176, 0, 0.1);
+        }
+
+        .galeri-item:nth-child(2n) { grid-row: span 2; }
+        .galeri-item:nth-child(35n) { grid-column: span 2; }
+
+        .galeri-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--hijau-tua);
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--hijau-terang), var(--hijau-muda));
+        }
+
+        /* --- FLOATING MENU --- */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .floating-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background-color: var(--kuning-ceria);
+            color: var(--hijau-tua);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(56, 176, 0, 0.3);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+            background-color: var(--putih);
+            border: 2px solid var(--hijau-daun);
+        }
+
+        /* --- FOOTER / KONTAK --- */
+        footer {
+            background: linear-gradient(135deg, var(--hijau-tua), var(--hijau-daun));
+            color: var(--putih);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* --- ANIMASI --- */
+        @keyframes membal {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        @keyframes melayang {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(20deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* Responsif Mobile */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; } 
+            .big-logo { font-size: 2.5rem; }
+            .hero-mini-title { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOGO BESAR & BERANDA -->
+    <div class="hero-section" id="beranda">
+        <!-- Judul Tambahan Atas (Agak kecil & Oren) -->
+        
+        <div class="big-logo">
+            <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="hero-mini-title">Si Bumen Petualangan Lanting Karamel: Game Edukasi Pertanian dan Wirausaha Cerdas Finansial 
+
+Berbasis Kearifan Lokal Kebumen</div>
+        <div class="hero-tagline">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla efficitur aliquam ante, nec malesuada augue vulputate quis. In sollicitudin sagittis urna. Vivamus gravida, ex non dictum molestie, tellus lectus ornare nulla, eget varius purus metus ut quam. Nunc a tellus dui. Vestibulum egestas eros sed dui rhoncus ultricies. Suspendisse porttitor, est pharetra mattis congue, lacus libero fringilla mauris, vel convallis purus diam at massa. Curabitur aliquet mollis magna quis suscipit. Aenean scelerisque eros erat, eget porta lorem elementum a. Proin vehicula quam metus, a fringilla odio euismod quis. Donec non elit ac libero tempus sodales faucibus sed elit. Aliquam vulputate, ipsum et rutrum ultrices, orci eros bibendum nibh, non varius justo ligula ut tortor.</div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#beranda">Beranda</a></li>
+                <li class="nav-item"><a href="#game">Game</a></li>
+                <li class="nav-item"><a href="#target">Target Market</a></li>
+                <li class="nav-item"><a href="#fitur">Fitur Game</a></li>
+                <li class="nav-item"><a href="#galeri">Galeri</a></li>
+                <li class="nav-item"><a href="#berita">Berita</a></li>
+                <li class="nav-item"><a href="#tentang">Tentang Kami</a></li>
+                <li class="nav-item"><a href="#kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- FLOATING MENU -->
+    <div class="floating-container">
+        <a href="#kontak" class="floating-btn" title="Hubungi Kami"><i class="fas fa-envelope"></i></a>
+        <a href="#game" class="floating-btn" title="Main Game" style="background-color: #ff595e; color: white;"><i class="fas fa-play"></i></a>
+    </div>
+
+    <!-- SECTION GAME -->
+    <section id="game">
+        <h2 class="section-title">Tentang Game Kami</h2>
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-calculator"></i></div>
+                <h3>Matematika</h3>
+                <p>Belajar berhitung dengan soal pertanian.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-font"></i></div>
+                <h3>Penguasaan percakapan lewat dialog</h3>
+                <p>Berdialog dan negosiasi untuk melatih interaksi sosial berbasis digital.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-paint-brush"></i></div>
+                <h3>Warna - warni Dunia</h3>
+                <p>Dunia yang luas dan unik yang bisa dijelajahi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION TARGET MARKET -->
+    <section id="target" style="background-color: var(--putih); border-top: 1px solid #eee;">
+        <h2 class="section-title">Target Pengguna</h2>
+        <div class="grid-container">
+            <div class="card market-card">
+                <div class="card-icon" style="color: var(--oranye-santai);"><i class="fas fa-baby"></i></div>
+                <div class="market-badge">Usia 3 - 5 Tahun</div>
+                <h3>PAUD / Balita</h3>
+                <p>Fokus pada pengenalan warna, bentuk dasar, suara hewan, dan melatih motorik kasar lewat ketukan layar.</p>
+            </div>
+            <div class="card market-card">
+                <div class="card-icon" style="color: var(--oranye-santai);"><i class="fas fa-shapes"></i></div>
+                <div class="market-badge">Usia 5 - 7 Tahun</div>
+                <h3>Taman Kanak-Kanak</h3>
+                <p>Mulai mengenal huruf alfabet, membaca suku kata pendek, berhitung dasar, serta melatih logika sederhana.</p>
+            </div>
+            <div class="card market-card">
+                <div class="card-icon" style="color: var(--oranye-santai);"><i class="fas fa-graduation-cap"></i></div>
+                <div class="market-badge">Usia 7 - 9 Tahun</div>
+                <h3>SD Kelas Rendah</h3>
+                <p>Petualangan matematika yang lebih menantang, penyusunan kalimat penuh, serta kuis sains interaktif yang seru.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION FITUR GAME -->
+    <section id="fitur" style="background-color: var(--hijau-muda); border-radius: 50px 50px 0 0;">
+        <h2 class="section-title" style="color: var(--hijau-tua);">Fitur Game</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Aman untuk Anak</h3>
+                <p>Tanpa iklan mengganggu dan konten yang ramah anak.</p>
+            </div>
+            <div class="card">
+                <h3>Kurikulum Resmi</h3>
+                <p>Materi disesuaikan dengan kurikulum pendidikan usia dini.</p>
+            </div>
+            <div class="card">
+                <h3>Laporan Orang Tua</h3>
+                <p>Pantau perkembangan belajar buah hati Anda dengan mudah.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION GALERI -->
+    <section id="galeri">
+        <h2 class="section-title">Galeri Aktivitas</h2>
+        <div class="galeri-grid">
+            <div class="galeri-item"><div class="galeri-placeholder"><i class="fas fa-smile"></i></div></div>
+            <div class="galeri-item"><div class="galeri-placeholder"><i class="fas fa-child"></i></div></div>
+            <div class="galeri-item"><div class="galeri-placeholder"><i class="fas fa-star"></i></div></div>
+            <div class="galeri-item"><div class="galeri-placeholder"><i class="fas fa-trophy"></i></div></div>
+            <div class="galeri-item"><div class="galeri-placeholder"><i class="fas fa-heart"></i></div></div>
+            <div class="galeri-item"><div class="galeri-placeholder"><i class="fas fa-lightbulb"></i></div></div>
+        </div>
+    </section>
+
+    <!-- SECTION BERITA -->
+    <section id="berita" style="background-color: var(--putih); border-top: 1px solid #eee;">
+        <h2 class="section-title">Berita Edukasi</h2>
+        <div class="berita-container">
+            
+            <div class="berita-card">
+                <div class="berita-img-placeholder">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <div class="berita-content">
+                    <h3>Game Edukasi Raih Penghargaan</h3>
+                    <p>EduGames berhasil memenangkan kategori aplikasi anak terbaik tahun ini karena inovasi belajarnya...</p>
+                </div>
+                <div class="berita-overlay">
+                    <a href="https://example.com/berita1" target="_blank" class="btn-lihat">Lihat Berita</a>
+                </div>
+            </div>
+
+            <div class="berita-card">
+                <div class="berita-img-placeholder">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="berita-content">
+                    <h3>Pentingnya Belajar Sambil Bermain</h3>
+                    <p>Studi terbaru menunjukkan anak-anak menangkap materi 50% lebih cepat melalui metode gamifikasi...</p>
+                </div>
+                <div class="berita-overlay">
+                    <a href="https://example.com/berita2" target="_blank" class="btn-lihat">Lihat Berita</a>
+                </div>
+            </div>
+
+            <div class="berita-card">
+                <div class="berita-img-placeholder">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="berita-content">
+                    <h3>Update Fitur Ruang Angkasa!</h3>
+                    <p>Minggu depan EduGames akan merilis modul baru bertema tata surya yang super seru untuk dicoba...</p>
+                </div>
+                <div class="berita-overlay">
+                    <a href="https://example.com/berita
