@@ -17,3 +17,15 @@
     height: auto;
     display: block;
 }
+
+@media (max-width: 768px) {
+    .galeri-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .galeri-grid {
+        column-count: 1;
+    }
+}
