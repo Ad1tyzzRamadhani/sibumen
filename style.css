@@ -1,4 +1,19 @@
+.galeri-grid {
+    column-count: 3;
+    column-gap: 15px;
+}
+
+.galeri-item {
+    break-inside: avoid;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 4px solid white;
+    box-shadow: 0 5px 15px rgba(56, 176, 0, 0.1);
+}
+
 .galeri-item img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    display: block;
 }
