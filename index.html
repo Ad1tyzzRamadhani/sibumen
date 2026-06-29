@@ -307,37 +307,6 @@
             transform: scale(1.1);
         }
 
-        /* --- GALERI (Masonry Style) --- */
-        .galeri-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            grid-auto-rows: 200px;
-            gap: 15px;
-        }
-
-        .galeri-item {
-            background-color: var(--hijau-muda);
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            border: 4px solid var(--putih);
-            box-shadow: 0 5px 15px rgba(56, 176, 0, 0.1);
-        }
-
-        .galeri-item:nth-child(2n) { grid-row: span 2; }
-        .galeri-item:nth-child(35n) { grid-column: span 2; }
-
-        .galeri-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--hijau-tua);
-            font-size: 2rem;
-            background: linear-gradient(135deg, var(--hijau-terang), var(--hijau-muda));
-        }
-
         /* --- FLOATING MENU --- */
         .floating-container {
             position: fixed;
@@ -535,12 +504,12 @@ Berbasis Kearifan Lokal Kebumen</div>
     <section id="galeri">
         <h2 class="section-title">Galeri Aktivitas</h2>
         <div class="galeri-grid">
-            <div class="galeri-item"><div class="galeri-placeholder"><img src="images/Screenshot_20260625_122549.jpg"></div></div>
-            <div class="galeri-item"><div class="galeri-placeholder"><i class="fas fa-child"></i></div></div>
-            <div class="galeri-item"><div class="galeri-placeholder"><img src="IMG_20260617_112430.jpg"></div></div>
-            <div class="galeri-item"><div class="galeri-placeholder"><i class="fas fa-trophy"></i></div></div>
-            <div class="galeri-item"><div class="galeri-placeholder"><i class="fas fa-heart"></i></div></div>
-            <div class="galeri-item"><div class="galeri-placeholder"><i class="fas fa-lightbulb"></i></div></div>
+            <div class="galeri-item"><img src="images/Screenshot_20260625_122549.jpg"></div></div>
+            <div class="galeri-item"><i class="fas fa-child"></i></div></div>
+            <div class="galeri-item"><img src="IMG_20260617_112430.jpg"></div></div>
+            <div class="galeri-item"><i class="fas fa-trophy"></i></div></div>
+            <div class="galeri-item"><i class="fas fa-heart"></i></div></div>
+            <div class="galeri-item"><i class="fas fa-lightbulb"></i></div></div>
         </div>
     </section>
 
